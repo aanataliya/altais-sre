@@ -5,7 +5,7 @@ Please note that all commands and scripts have been written and tested on mac OS
 **Prerequisite:**
 
 1. AWS version 2.4.6 is required
-2. AWS Cli should be configured using access_key,secret_key and should be networking
+2. AWS Cli should be configured using access_key,secret_key and should be working
 3. Terraform version 1.1.1 is required
 4. Minikube version 1.24.0 is required
 5. Docker version 20.10.12 is required
@@ -21,9 +21,11 @@ Below infrastrcture is created using terraform script.
 - S3 bucket with notification event configured to SQS
 - SQS Event
 - S3 file Object
-- A test  case to verify webserver url repsponse written using Terratest (Go Lang)
 
-Apart from that, A small python application is created for demonstration purpose. This app is created using docker which will be deployed through kubernetes configuration. Minikube is used to deploy application.
+Apart from that,
+
+- A test  case to verify webserver url repsponse written using Terratest (Go Lang)
+- A small python application is created for demonstration purpose. This app is created using docker which will be deployed through kubernetes configuration. Minikube is used to deploy application.
 
 ***Please verify Architecture diagram in Diagram folder.***
 
