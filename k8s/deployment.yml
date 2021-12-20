@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: altais-deployment
+  namespace: ns-altais
+  labels:
+    name: altais
+spec:
+  selector:
+    matchLabels:
+      app: altais
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: altais
+    spec:
+      containers:
+      - name: altais
+        image: altais
+        imagePullPolicy: Never
+        ports:
+          - name: internal-port
+            containerPort: 5000
+        livenessProbe:
+          exec:
+            command:
+               - curl
+               - -X
+               - GET
+               - http://localhost:5000/sayhi
+          initialDelaySeconds: 2
+          periodSeconds: 3
+          successThreshold: 1
+          failureThreshold: 1
+        readinessProbe:
+          tcpSocket:
+            port: internal-port
+          timeoutSeconds: 2
+          initialDelaySeconds: 2
+          periodSeconds: 5
+          successThreshold: 2
+          failureThreshold: 1

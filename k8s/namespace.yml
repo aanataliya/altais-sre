@@ -1,0 +1,6 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: ns-altais
+  labels:
+    name: ns-altais

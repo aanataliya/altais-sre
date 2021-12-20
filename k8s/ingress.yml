@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: altais-ingress
+  namespace: ns-altais
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /sayhi
+        pathType: Prefix
+        backend:
+          service:
+            name: altais-service
+            port:
+              number: 5000
